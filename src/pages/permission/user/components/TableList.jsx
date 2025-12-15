@@ -5,6 +5,7 @@ import { apiUserDelete } from '@/api/user/index'
 import { useRef } from 'react'
 import KbpPagination from '@/components/KbpPagination/index'
 import { useTable } from '@/context/TableProvider'
+import Permission from '@/components/Permission'
 export default function TableList() {
     const userRef = useRef(null)
     const { loading, sourceData, onSearch } = useTable()
@@ -76,7 +77,9 @@ export default function TableList() {
             title: '操作',
             render: (row, record) => {
                 return (<>
-                    <Button type="link" size='small' icon={<EditOutlined />} onClick={() => hanlderEdit(row)} >编辑</Button>
+                    <Permission pers={['config:config:add']}>
+                        <Button type="link" size='small' icon={<EditOutlined />} onClick={() => hanlderEdit(row)} >编辑</Button>
+                    </Permission>
                     <Button type="link" size='small' icon={<DeleteOutlined />} onClick={() => hanlderDel(row)}  >删除</Button>
                     <Button type="link" size='small' icon={<UserOutlined />} >赋予角色</Button>
                     <Button type="link" size='small' icon={<UsergroupDeleteOutlined />} >初始密码</Button>
@@ -95,7 +98,11 @@ export default function TableList() {
     }
     return (
         <>
-            <section> <Button type='primary' onClick={showUserModal} >新增</Button> </section>
+            <section>
+                <Permission pers={['config:config:edit']}>
+                    <Button type='primary' onClick={showUserModal} >新增</Button>
+                </Permission>
+            </section>
             <Table loading={loading}
                 sticky
                 rowKey={(record) => record.id}

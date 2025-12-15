@@ -4,6 +4,7 @@
 ## 并且对于表格有组件的封装，保证样式的统一和开发规范
 ## 表格入参使用useContext的方式注入，有效提高效率
 ## 自定义封装hooks-useRequest是在查询表格上更进一步简化
+## Permission组件做按钮权限控制
 
 
 ## 基于vite+ant+react搭建的后台管理系统

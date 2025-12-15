@@ -6,6 +6,7 @@ export const useAuthStore = create(
         token: getToken(),
         userInfo: null,
         menus: [],
+        permissions: ['config:config:add', 'config:config:edit'],
         setToken: (token) => {
             set({ token })
             setToken(token)
@@ -23,4 +24,14 @@ export const useAuthStore = create(
             clearToken()
             set({ userInfo: null })
         },
+        getPermission: () => { },
+        hasPermission: (pers = []) => {
+            try {
+                if (!Array.isArray(pers)) throw ''
+                return pers.some(i => get().permissions.includes(i))
+            } catch (error) {
+                return false
+            }
+
+        }
     }))

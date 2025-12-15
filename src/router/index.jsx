@@ -10,9 +10,9 @@
 import { createHashRouter, Navigate } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import AuthRoute from './authRoute'
-import { Spin } from 'antd'
 const Login = lazy(() => import('@/pages/Login/index'))
 const Layouts = lazy(() => import('@/Layouts/index'))
+import GlobalLoading from '@/components/GlobalLoading'
 const CompuFunc = (item) => {
     if (!item.component) return null
     const Com = lazy(() => import(`../pages${item.component}`))
@@ -25,6 +25,7 @@ const generateRoutes = (menus) => {
         menuItems.forEach(item => {
             if (item.path) {
                 const route = {
+
                     key: item.key,
                     path: item.path,
                     element: CompuFunc(item)
@@ -71,7 +72,7 @@ export const createRouter = (dynamicRoutes = []) => {
         {
             path: '/',
             element:
-                <Suspense fallback={<div><Spin /></div>} >
+                <Suspense fallback={<GlobalLoading />} >
                     <AuthRoute>
                         <Layouts></Layouts>
                     </AuthRoute>
