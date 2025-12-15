@@ -1,0 +1,38 @@
+.panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    &-search {
+        background-color: #fff;
+        padding: 12px 12px 0px 12px;
+        margin-bottom: 12px;
+
+        :global(.ant-form-item) {
+            padding-bottom: 12px;
+
+            &-control-input {
+                width: 220px;
+            }
+
+
+        }
+
+        :global(.ant-btn) {
+            width: 100px;
+            margin-left: 12px;
+        }
+    }
+
+    &-contet {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden auto;
+        flex: 1;
+        background-color: #fff;
+
+    }
+
+}

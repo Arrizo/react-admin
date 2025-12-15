@@ -1,0 +1,306 @@
+[
+    {
+        "id": 1,
+        "path": "/permission",
+        "name": "permission",
+        "meta": {
+            "title": "权限管理"
+        },
+        "component": "",
+        "children": [
+            {
+                "id": 2,
+                "path": "/permission/user",
+                "name": "permission:user",
+                "meta": {
+                    "title": "用户管理"
+                },
+                "component": "/permission/user/index",
+                "children": []
+            },
+            {
+                "id": 10,
+                "path": "/permission/menu",
+                "name": "permission:menu",
+                "meta": {
+                    "title": "菜单管理"
+                },
+                "component": "/permission/menu/index",
+                "children": []
+            },
+            {
+                "id": 15,
+                "path": "/permission/role",
+                "name": "permission:role",
+                "meta": {
+                    "title": "角色管理"
+                },
+                "component": "/permission/role/index",
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 22,
+        "path": "/system",
+        "name": "system",
+        "meta": {
+            "title": "系统管理"
+        },
+        "component": "",
+        "children": [
+            {
+                "id": 23,
+                "path": "/system/setting",
+                "name": "system:setting",
+                "meta": {
+                    "title": "系统设置"
+                },
+                "component": "/system/setting/index",
+                "children": []
+            },
+            {
+                "id": 34,
+                "path": "/system/crontab",
+                "name": "plugin:mine-admin:crontab",
+                "meta": {
+                    "title": "定时任务管理"
+                },
+                "component": "/system/crontab/index",
+                "children": []
+            },
+            {
+                "id": 40,
+                "path": "/system/log",
+                "name": "system:log",
+                "meta": {
+                    "title": "日志管理"
+                },
+                "component": "",
+                "children": [
+                    {
+                        "id": 41,
+                        "path": "/system/log/userLoginLog",
+                        "name": "log:userLogin",
+                        "meta": {
+                            "title": "用户登录日志管理"
+                        },
+                        "component": "/system/log/userLoginLog/index",
+                        "children": []
+                    },
+                    {
+                        "id": 44,
+                        "path": "/system/log/operationLog",
+                        "name": "log:userOperation",
+                        "meta": {
+                            "title": "操作日志管理"
+                        },
+                        "component": "/system/log/userOperation/index",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 47,
+        "path": "/dataCenter",
+        "name": "dataCenter",
+        "meta": {
+            "title": "数据中心"
+        },
+        "component": "",
+        "children": [
+            {
+                "id": 48,
+                "path": "/dataCenter/attachment",
+                "name": "dataCenter:attachment",
+                "meta": {
+                    "title": "附件管理"
+                },
+                "component": "/dataCenter/attachment/index",
+                "children": []
+            },
+            {
+                "id": 52,
+                "path": "/dataCenter/dictionary",
+                "name": "dataCenter:dictionary",
+                "meta": {
+                    "title": "数据字典"
+                },
+                "component": "/dataCenter/dictionary/index",
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 61,
+        "path": "/activity",
+        "name": "activity",
+        "meta": {
+            "title": "活动中心"
+        },
+        "component": "",
+        "children": [
+            {
+                "id": 62,
+                "path": "/activity/Template",
+                "name": "activity:activity_template:Index",
+                "meta": {
+                    "title": "模板库"
+                },
+                "component": "/activity/Template/index",
+                "children": []
+            },
+            {
+                "id": 74,
+                "path": "/activity/Config",
+                "name": "activity:config",
+                "meta": {
+                    "title": "活动配置"
+                },
+                "component": "/activity/Config/index",
+                "children": []
+            },
+            {
+                "id": 81,
+                "path": "/activity/AgencyGray",
+                "name": "activity:config:agency_gray",
+                "meta": {
+                    "title": "运营商灰度"
+                },
+                "component": "/activity/AgencyGray/index",
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 85,
+        "path": "/config",
+        "name": "config",
+        "meta": {
+            "title": "配置中心"
+        },
+        "component": "",
+        "children": [
+            {
+                "id": 86,
+                "path": "/config/config",
+                "name": "config:config",
+                "meta": {
+                    "title": "切水果配置"
+                },
+                "component": "/config/config/index",
+                "children": []
+            },
+            {
+                "id": 88,
+                "path": "/config/config/add",
+                "name": "config:config:create",
+                "meta": {
+                    "title": "配置新增",
+                    "hidden": true
+                },
+                "component": "/config/config/add",
+                "children": []
+            },
+            {
+                "id": 89,
+                "path": "/config/config/edit/:id",
+                "name": "config:config:update",
+                "meta": {
+                    "title": "配置编辑",
+                    "hidden": true
+                },
+                "component": "/config/config/edit",
+                "children": []
+            },
+            {
+                "id": 90,
+                "path": "config/config/copy/:id",
+                "name": "config:config:copy",
+                "meta": {
+                    "title": "配置复制",
+                    "hidden": true
+                },
+                "component": "/config/config/copy",
+                "children": []
+            },
+            {
+                "id": 93,
+                "path": "/config/common",
+                "name": "config:common",
+                "meta": {
+                    "title": "通用配置"
+                },
+                "component": "/config/common/index",
+                "children": []
+            },
+            {
+                "id": 95,
+                "path": "/config/common/add",
+                "name": "config:common:create",
+                "meta": {
+                    "title": "通用配置新增",
+                    "hidden": true
+                },
+                "component": "/config/common/add",
+                "children": []
+            },
+            {
+                "id": 96,
+                "path": "/config/common/edit/:id",
+                "name": "config:common:update",
+                "meta": {
+                    "title": "通用配置编辑",
+                    "hidden": true
+                },
+                "component": "/config/common/edit",
+                "children": []
+            },
+            {
+                "id": 97,
+                "path": "/config/common/copy/:id",
+                "name": "config:common:copy",
+                "meta": {
+                    "title": "通用配置复制",
+                    "hidden": true
+                },
+                "component": "/config/common/copy",
+                "children": []
+            },
+            {
+                "id": 100,
+                "path": "/config/template",
+                "name": "config:template",
+                "meta": {
+                    "title": "模板列表"
+                },
+                "component": "/config/template/index",
+                "children": []
+            },
+            {
+                "id": 102,
+                "path": "/config/template/add",
+                "name": "config:template:create",
+                "meta": {
+                    "title": "模板新增",
+                    "hidden": true
+                },
+                "component": "/config/template/add",
+                "children": []
+            },
+            {
+                "id": 103,
+                "path": "/config/template/edit/:id",
+                "name": "config:template:update",
+                "meta": {
+                    "title": "模板编辑",
+                    "hidden": true
+                },
+                "component": "/config/template/edit",
+                "children": []
+            }
+        ]
+    }
+]
