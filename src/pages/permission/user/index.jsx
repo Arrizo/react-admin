@@ -4,24 +4,20 @@ import TableList from './components/TableList'
 import { apiUserList } from '@/api/user/index'
 import { UserReqClass } from './typs'
 import { useRequest } from '@/hooks/useRequest'
+import { TableProvider } from '@/context/TableProvider'
 export default function user() {
-    const { loading, sourceData, total, onSearch, page, pageSize } = useRequest(apiUserList, new UserReqClass())
+    // 其实可以直接这样简写：
+    const props = useRequest(apiUserList, new UserReqClass())
     return (
-        <KbpPanel>
-            <KbpPanel.Search>
-                <Search onSearch={onSearch} loading={loading} />
-            </KbpPanel.Search>
-            <KbpPanel.Table>
-                <TableList
-                    onPagination={onSearch}
-                    loading={loading}
-                    tableData={sourceData}
-                    total={total}
-                    page={page}
-                    page_size={pageSize}
-                />
-            </KbpPanel.Table>
-        </KbpPanel>
-
+        <TableProvider {...props}>
+            <KbpPanel>
+                <KbpPanel.Search>
+                    <Search />
+                </KbpPanel.Search>
+                <KbpPanel.Table>
+                    <TableList />
+                </KbpPanel.Table>
+            </KbpPanel>
+        </TableProvider>
     )
 }

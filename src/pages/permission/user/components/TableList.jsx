@@ -3,8 +3,11 @@ import { EditOutlined, DeleteOutlined, UserOutlined, UsergroupDeleteOutlined } f
 import UserModal from './UserModal'
 import { apiUserDelete } from '@/api/user/index'
 import { useRef } from 'react'
-export default function TableList({ onPagination, tableData = [], total, loading, page_size, page }) {
+import KbpPagination from '@/components/KbpPagination/index'
+import { useTable } from '@/context/TableProvider'
+export default function TableList() {
     const userRef = useRef(null)
+    const { loading, sourceData, onSearch } = useTable()
     const showUserModal = () => userRef.current.showModal()
     const hanlderEdit = (row) => {
         userRef.current.showModal(row)
@@ -17,8 +20,7 @@ export default function TableList({ onPagination, tableData = [], total, loading
                     return Promise.reject()
                 }
                 message.success('删除成功！')
-                onPagination()
-
+                onSearch()
             }
         })
 
@@ -91,27 +93,18 @@ export default function TableList({ onPagination, tableData = [], total, loading
 
         }
     }
-    const pagination = {
-        current: page,
-        pageSize: page_size,
-        total: total,
-        showTotal: () => `total: ${total}`,
-        showQuickJumper: true,
-        showSizeChanger: true,
-        defaultPageSize: 10,
-        onChange: (page, page_size) => onPagination({ page, page_size })
-    }
     return (
         <>
             <section> <Button type='primary' onClick={showUserModal} >新增</Button> </section>
             <Table loading={loading}
-                // scroll={{ y: 979 }}
+                sticky
                 rowKey={(record) => record.id}
-                pagination={pagination}
                 rowSelection={rowSelection}
-                dataSource={tableData}
+                dataSource={sourceData}
+                pagination={false}
                 columns={columns} />
-            <UserModal ref={userRef} onFresch={() => onPagination({})} />
+            <KbpPagination />
+            <UserModal ref={userRef} onFresch={() => onSearch({})} />
         </>
 
 

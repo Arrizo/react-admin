@@ -4,7 +4,7 @@ export const useRequest = (apiFun, requestParams, arg = { immediate: true }) => 
     const [sourceData, setSourceData] = useState([])
     const [total, setTotal] = useState(0)
     const [page, setPage] = useState(requestParams.page)
-    const [pageSize, setPageSize] = useState(requestParams.page_size)
+    const [page_size, setPageSize] = useState(requestParams.page_size)
     async function commonRequest(innerParams) {
         try {
             const params = innerParams || requestParams
@@ -16,7 +16,6 @@ export const useRequest = (apiFun, requestParams, arg = { immediate: true }) => 
             setPageSize(params.page_size)
             setTotal(res?.data?.total ?? 0)
             setSourceData(res?.data?.list ?? [])
-            console.log(page, '111111111', pageSize)
             return res
         } catch (error) {
             setLoading(false)
@@ -41,6 +40,6 @@ export const useRequest = (apiFun, requestParams, arg = { immediate: true }) => 
         sourceData,
         total,
         page,
-        pageSize
+        page_size
     }
 }

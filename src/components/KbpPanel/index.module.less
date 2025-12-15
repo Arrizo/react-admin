@@ -29,10 +29,14 @@
         padding: 12px;
         display: flex;
         flex-direction: column;
-        overflow: hidden auto;
+        overflow: hidden;
         flex: 1;
         background-color: #fff;
 
+        :global(.ant-table-wrapper) {
+            overflow: hidden auto;
+            flex: 1;
+        }
     }
 
 }

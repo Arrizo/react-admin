@@ -1,7 +1,9 @@
 import { Form, Input, Button } from 'antd'
 import { UserReqClass } from '../typs'
-export default function Search({ loading, onSearch }) {
+import { useTable } from '@/context/TableProvider'
+export default function Search() {
     const [form] = Form.useForm()
+    const { loading, onSearch } = useTable()
     const handleSearch = () => {
         onSearch(form.getFieldsValue())
     }
