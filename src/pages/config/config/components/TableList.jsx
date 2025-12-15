@@ -2,15 +2,18 @@ import { Table, Tag, Button, Pagination, Switch } from 'antd'
 import { apiConfigStatus } from '@/api/config'
 import { EditOutlined, DeleteOutlined, UserOutlined } from '@ant-design/icons'
 import PusherModal from '../components/pusherModal'
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-export default function TableList({ onPagination, tableData = [], total, loading, page_size, page, tempalteList }) {
+import { useTable } from '@/context/TableProvider'
+import KbpPagination from '@/components/KbpPagination/index'
+export default function TableList({ tempalteList }) {
     const modalRef = useRef(null)
+    const { loading, sourceData, onSearch } = useTable()
     const navigate = useNavigate()
     const onCheckedChange = async (checked, row) => {
         const { code } = await apiConfigStatus(row.id, Number(checked))
         if (code != 200) { row.status = !checked } else {
-            onPagination()
+            onSearch()
         }
 
     }
@@ -77,6 +80,7 @@ export default function TableList({ onPagination, tableData = [], total, loading
         {
             align: 'center',
             title: '操作',
+            width: 300,
             render: (row, record) => {
                 return (<>
                     <Button type="link" size='small' icon={<EditOutlined />} onClick={goTo} >复制</Button>
@@ -95,17 +99,6 @@ export default function TableList({ onPagination, tableData = [], total, loading
 
         }
     }
-    const pagination = {
-        current: page,
-        pageSize: page_size,
-        total: total,
-        showTotal: () => `total: ${total}`,
-        showQuickJumper: true,
-        showSizeChanger: true,
-        defaultPageSize: 10,
-        onChange: (page, page_size) => onPagination({ page, page_size })
-
-    }
     return (
         <>
             <section style={{ marginBottom: '10px' }}>
@@ -114,16 +107,13 @@ export default function TableList({ onPagination, tableData = [], total, loading
             </section>
 
             <Table loading={loading}
-
-                // scroll={{ y: 979 }}
+                sticky
                 rowKey={(record) => record.id}
-                pagination={pagination}
+                pagination={false}
                 rowSelection={rowSelection}
-                dataSource={tableData}
+                dataSource={sourceData}
                 columns={columns} />
-
-
-
+            <KbpPagination />
             <PusherModal tempalteList={tempalteList} ref={modalRef} />
         </>
 

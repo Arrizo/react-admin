@@ -10,6 +10,7 @@
 import { createHashRouter, Navigate } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import AuthRoute from './authRoute'
+import { Spin } from 'antd'
 const Login = lazy(() => import('@/pages/Login/index'))
 const Layouts = lazy(() => import('@/Layouts/index'))
 const CompuFunc = (item) => {
@@ -65,12 +66,12 @@ export const createRouter = (dynamicRoutes = []) => {
         },
         {
             path: '/',
-            element: <Suspense fallback={<div>loging2222....</div>} ><Navigate to={'/welcome'} replace ></Navigate></Suspense>
+            element: <Suspense fallback={<div> loading</div>} ><Navigate to={'/welcome'} replace ></Navigate></Suspense>
         },
         {
             path: '/',
             element:
-                <Suspense fallback={<div>loging4444....</div>} >
+                <Suspense fallback={<div><Spin /></div>} >
                     <AuthRoute>
                         <Layouts></Layouts>
                     </AuthRoute>

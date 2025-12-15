@@ -128,3 +128,6 @@ html, body {
   opacity: 0;
   transition: opacity 300ms ease-in;
 }
+.ant-btn +.ant-btn{
+  margin-left: 12px;
+}

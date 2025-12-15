@@ -1,8 +1,10 @@
 import { ConfigClassReq } from '../types'
 import { Form, Input, Button, Select } from 'antd'
+import { useTable } from '@/context/TableProvider'
 
-export default function Search({ tempalteList, loading, onSearch }) {
+export default function Search({ tempalteList }) {
     const [form] = Form.useForm()
+    const { loading, onSearch } = useTable()
     const handleSearch = () => {
         onSearch(form.getFieldsValue())
     }
