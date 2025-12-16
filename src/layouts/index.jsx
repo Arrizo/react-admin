@@ -1,7 +1,7 @@
-import { useState, Suspense, useMemo } from 'react'
-import { Outlet, useNavigate, Link, useLocation, matchPath } from 'react-router-dom'
+import { useState, useMemo } from 'react'
+import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import * as Icons from '@ant-design/icons'
-import { Layout, Menu, Button, Dropdown, Space, Avatar, Breadcrumb } from 'antd'
+import { Layout, Menu, Button, Dropdown, Space, Avatar } from 'antd'
 import { useAuthStore } from '@/store'
 import Iconfont from '@/utils/iconUtils'
 import { baseRoutes } from '@/router'
@@ -72,11 +72,11 @@ export default function Layouts() {
     ]
     return (
         <Layout className={styles.container} >
-            <Sider trigger={null} collapsible collapsed={collapsed} theme='light' >
+            <Sider trigger={null} collapsible collapsed={collapsed} theme='light'>
                 <section className={styles.logo} >
                     <h2>{collapsed ? '物料' : '物料管理'}</h2>
                 </section>
-                <Menu mode="inline" theme='light' items={memoMenus} defaultOpenKeys={defaultOpenKeys} selectedKeys={defaultSelectedKeys} onClick={({ key }) => goto(key)}>
+                <Menu mode="inline" theme='light' style={{ overflow: 'hidden auto' }} items={memoMenus} defaultOpenKeys={defaultOpenKeys} selectedKeys={defaultSelectedKeys} onClick={({ key }) => goto(key)}>
                 </Menu>
             </Sider>
             <Layout  >
@@ -92,7 +92,6 @@ export default function Layouts() {
                     </section>
 
                 </Header>
-                {/* <Breadcrumb style={{ background: '#fff' }} itemRender={itemRender} items={sliderMenus}></Breadcrumb> */}
                 <Content className={styles.content}>
                     <Outlet></Outlet>
                 </Content>

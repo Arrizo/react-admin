@@ -25,7 +25,6 @@ const generateRoutes = (menus) => {
         menuItems.forEach(item => {
             if (item.path) {
                 const route = {
-
                     key: item.key,
                     path: item.path,
                     element: CompuFunc(item)
