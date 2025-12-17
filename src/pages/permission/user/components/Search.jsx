@@ -1,5 +1,5 @@
 import { Form, Input, Button } from 'antd'
-import { UserReqClass } from '../typs'
+import { UserReqClass } from '../types'
 import { useTable } from '@/context/TableProvider'
 export default function Search() {
     const [form] = Form.useForm()

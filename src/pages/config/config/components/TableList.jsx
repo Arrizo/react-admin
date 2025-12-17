@@ -15,7 +15,6 @@ export default function TableList({ tempalteList }) {
         if (code != 200) { row.status = !checked } else {
             onSearch()
         }
-
     }
     const openPusher = () => {
         modalRef.current.showModal()

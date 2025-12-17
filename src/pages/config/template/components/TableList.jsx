@@ -107,6 +107,7 @@ export default function TableList({ onPagination, tableData = [], total, loading
             </section>
 
             <Table
+                sticky
                 loading={loading}
                 rowKey={(record) => record.template_id}
                 pagination={pagination}
