@@ -58,13 +58,14 @@ const UserModal = forwardRef(({ onFresch }, ref) => {
         try {
             setLoading(true)
             await form.validateFields()
-            const { code } = await apiEditOrAddUser(form.getFieldValue())
-            if (code != 200) throw ''
+            const { code, message } = await apiEditOrAddUser(form.getFieldValue())
+            if (code != 200) throw new Error(message)
             setLoading(false)
             message.success('添加成功')
             onFresch()
             onCancel()
         } catch (error) {
+            message.error(error.message)
             setLoading(false)
         }
 
