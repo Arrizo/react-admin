@@ -90,6 +90,13 @@ html, body {
 .p-2 { padding: 16px; }
 .p-3 { padding: 24px; }
 
+.mt-12{
+  margin-top: 12px;
+}
+.mb-12{
+  margin-bottom: 12px;
+}
+
 .flex {
   display: flex;
 }

@@ -15,5 +15,5 @@ export default function KbpPanel({ children }) {
     );
 }
 // 定义插槽标识组件
-KbpPanel.Search = ({ children }) => children;
-KbpPanel.Table = ({ children }) => children;
+KbpPanel.Search = 'Search';
+KbpPanel.Table = 'Table';

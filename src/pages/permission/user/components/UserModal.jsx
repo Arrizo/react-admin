@@ -1,5 +1,5 @@
 
-import { Modal, Form, Select, Input, Row, Col, Upload, Radio, message } from 'antd'
+import { Modal, Form, Input, Row, Col, Upload, Radio, message } from 'antd'
 import { forwardRef, useImperativeHandle, useState } from 'react'
 import { apiUpload, apiEditOrAddUser } from '@/api/user/index'
 const UserModal = forwardRef(({ onFresch }, ref) => {
@@ -52,7 +52,7 @@ const UserModal = forwardRef(({ onFresch }, ref) => {
         } catch (error) {
             onError?.(error)
         }
-        console.log('customRequest')
+
     }
     const onOk = async () => {
         try {
@@ -86,8 +86,7 @@ const UserModal = forwardRef(({ onFresch }, ref) => {
                         listType='picture-card'
                         fileList={fileList}
                         onChange={onChange}
-                        customRequest={customRequest}
-                    >
+                        customRequest={customRequest}>
                         {!fileList?.length && ' + Upload'}
                     </Upload>
                 </Form.Item>
@@ -137,9 +136,7 @@ const UserModal = forwardRef(({ onFresch }, ref) => {
                 <Form.Item label='状态' name='status' >
                     <Radio.Group options={[{ label: '启用', value: 1 }, { label: '禁用', value: 2 }]} />
                 </Form.Item>
-
             </Form>
-
         </Modal>
     )
 })

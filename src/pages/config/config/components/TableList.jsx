@@ -101,7 +101,7 @@ export default function TableList({ tempalteList }) {
     }
     return (
         <>
-            <section style={{ marginBottom: '10px' }}>
+            <section className='mb-12'>
                 <Button type='primary' >新增</Button>
                 <Button onClick={openPusher} >发布</Button>
             </section>

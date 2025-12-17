@@ -98,7 +98,7 @@ export default function TableList() {
     }
     return (
         <>
-            <section>
+            <section className='mb-12' >
                 <Permission pers={['config:config:edit']}>
                     <Button type='primary' onClick={showUserModal} >新增</Button>
                 </Permission>

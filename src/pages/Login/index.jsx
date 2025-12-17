@@ -18,14 +18,13 @@ export default function Login() {
         try {
             setLoading(true)
             const { code, data } = await login(values)
-            if (code == 200) {
-                setToken(data.access_token);
-                message.success('登录成功')
-                navigete(from, { replace: true })
-            }
+            if (code != 200) throw new Error('登录失败')
+            setToken(data.access_token);
+            setLoading(false)
+            message.success('登录成功')
+            navigete(from, { replace: true })
         } catch (error) {
-            message.error('登录失败')
-        } finally {
+            message.error(error.message)
             setLoading(false)
         }
     }

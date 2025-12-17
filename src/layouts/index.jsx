@@ -6,7 +6,7 @@ import { useAuthStore } from '@/store'
 import Iconfont from '@/utils/iconUtils'
 import { baseRoutes } from '@/router'
 import { getOpenKeys } from '@/utils/helper'
-
+import KeepAliveOutlet from '@/components/KeepAliveOutlet'
 const { Sider, Header, Content } = Layout
 
 import styles from './BasicLayout.module.less'
@@ -93,6 +93,9 @@ export default function Layouts() {
 
                 </Header>
                 <Content className={styles.content}>
+                    {/* 使用该组件为了处理缓存问题 */}
+                    {/* <KeepAliveOutlet /> */}
+                    {/* 该方法不缓存 */}
                     <Outlet></Outlet>
                 </Content>
             </Layout>

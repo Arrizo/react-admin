@@ -62,11 +62,11 @@ export const createRouter = (dynamicRoutes = []) => {
         },
         {
             path: '*',
-            element: <Suspense fallback={<div>loging111....</div>} ><Navigate to={'/404'} replace ></Navigate></Suspense>
+            element: <Suspense fallback={<div>loging....</div>} ><Navigate to={'/404'} replace ></Navigate></Suspense>
         },
         {
             path: '/',
-            element: <Suspense fallback={<div> loading</div>} ><Navigate to={'/welcome'} replace ></Navigate></Suspense>
+            element: <Suspense fallback={<div>loading</div>} ><Navigate to={'/welcome'} replace ></Navigate></Suspense>
         },
         {
             path: '/',

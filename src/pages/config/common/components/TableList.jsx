@@ -114,16 +114,11 @@ export default function TableList({ onPagination, tableData = [], total, loading
             </section>
 
             <Table loading={loading}
-
-                // scroll={{ y: 979 }}
                 rowKey={(record) => record.id}
                 pagination={pagination}
                 rowSelection={rowSelection}
                 dataSource={tableData}
                 columns={columns} />
-
-
-
             <PusherModal tempalteList={tempalteList} ref={modalRef} />
         </>
 

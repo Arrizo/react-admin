@@ -20,6 +20,7 @@ const PusherModal = forwardRef(({ tempalteList }, ref) => {
         setIsOpen(false)
     }
     const onOk = async (e) => {
+
         try {
             await form.validateFields()
             setLoading(true)
