@@ -15,19 +15,21 @@ const Layouts = lazy(() => import('@/Layouts/index'))
 import GlobalLoading from '@/components/GlobalLoading'
 // 所有页面的引用
 const pageModules = import.meta.glob('../pages/**/*.jsx');
+
+/**
+ * 当前方法会有如下报错或潜在问题：
+ * 
+ * 1. 懒加载组件 <Com /> 使用时，React 要求该组件必须包裹在 <Suspense> 组件内，否则会在运行时抛出错误。
+ * 2. 路由组件渲染应直接返回 JSX 元素，并用 Suspense 配合懒加载；否则页面白屏或组件未加载。
+ * 3. 原实现 Com ? <Com /> : null 判断其实没意义，因为 lazy 始终返回一个组件，除非出现路径错误，但这里应更加健壮。
+ * 
+ * 优化建议如下：
+ * - 外部引入好 Suspense 的 fallback(loading)，包裹动态组件渲染，使渲染期间有 loading 状态；
+ * - 保证 item.component 必须以 “/” 开头与路由结构一致。
+ * - 避免直接渲染 null，可以抛出异常或警告。
+ */
+
 const CompuFunc = (item) => {
-    /**
-     * 当前方法会有如下报错或潜在问题：
-     * 
-     * 1. 懒加载组件 <Com /> 使用时，React 要求该组件必须包裹在 <Suspense> 组件内，否则会在运行时抛出错误。
-     * 2. 路由组件渲染应直接返回 JSX 元素，并用 Suspense 配合懒加载；否则页面白屏或组件未加载。
-     * 3. 原实现 Com ? <Com /> : null 判断其实没意义，因为 lazy 始终返回一个组件，除非出现路径错误，但这里应更加健壮。
-     * 
-     * 优化建议如下：
-     * - 外部引入好 Suspense 的 fallback(loading)，包裹动态组件渲染，使渲染期间有 loading 状态；
-     * - 保证 item.component 必须以 “/” 开头与路由结构一致。
-     * - 避免直接渲染 null，可以抛出异常或警告。
-     */
     if (!item.component) return null;
     const key = `../pages${item.component}.jsx`
     const importFn = pageModules[key]

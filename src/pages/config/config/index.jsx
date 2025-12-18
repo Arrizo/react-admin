@@ -10,7 +10,6 @@ import { TableProvider } from '@/context/TableProvider'
 export default function config() {
     const props = useRequest(apiConfigList, new ConfigClassReq())
     const [tempalteList, setTempalteList] = useState([])
-
     const getTemplateRemote = async () => {
         const { data, code } = await apiTemplateRemote(["template_id", "title", "gameType"])
         if (code == 200) {

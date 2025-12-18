@@ -79,7 +79,7 @@ export default function Layouts() {
                 <Menu mode="inline" theme='light' style={{ overflow: 'hidden auto' }} items={memoMenus} defaultOpenKeys={defaultOpenKeys} selectedKeys={defaultSelectedKeys} onClick={({ key }) => goto(key)}>
                 </Menu>
             </Sider>
-            <Layout  >
+            <Layout>
                 <Header style={{ background: '#fff' }}>
                     <section className={styles.headerBar}>
                         <Button onClick={() => setCollapsed(!collapsed)} type='text' icon={collapsed ? <Icons.MenuUnfoldOutlined /> : <Icons.MenuFoldOutlined />} ></Button>
