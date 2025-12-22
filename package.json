@@ -13,6 +13,8 @@
     "@ant-design/icons": "^6.1.0",
     "antd": "^6.0.0",
     "axios": "^1.13.2",
+    "commitizen": "^4.3.1",
+    "cz-customizable": "^7.5.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.9.5",
@@ -30,5 +32,13 @@
     "globals": "^16.3.0",
     "less": "^4.4.2",
     "vite": "^7.0.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.cjs"
+    }
   }
 }

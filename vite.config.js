@@ -33,8 +33,7 @@ export default ({ mode, command }) => {
         less: {
           javascriptEnabled: true,
           relativeUrls: true,
-          modifyVars: {
-          }
+          modifyVars: {}
         }
       }
     },
