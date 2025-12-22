@@ -16,3 +16,28 @@ pnpm run dev
 
 # 构建项目
 pnpm run build
+
+
+
+<!-- git 规范安装步骤 -->
+## 1、执行pnpm install commitizen cz-customizable 安装git交互和自定义交互文本
+## 2、新增.cz-config.js文件
+## 3、在package.json的config配置如下：
+###    "config": {
+###    "commitizen": {
+###      "path": "node_modules/cz-customizable"
+###    },
+###    "cz-customizable": {
+###      "config": ".cz-config.cjs"
+###    }
+###  }
+
+## 4、新增commitlint.config.cjs文件
+## 5、pnpm install @commitlint/cli @commitlint/config-conventional husky
+## 6、npx husky init（会生成 .husky 目录和 pre-commit 示例）
+## 7、手动在 .husky/commit-msg 写入：npx --no-install commitlint --edit "$1"
+## 8、在package.json中配置 "prepare": "husky install",
+## 9、npx husky install
+
+
+
