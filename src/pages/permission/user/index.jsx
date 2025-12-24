@@ -2,7 +2,7 @@ import KbpPanel from '@/components/BasePanel'
 import Search from './components/Search'
 import TableList from './components/TableList'
 import { apiUserList } from '@/api/permission/user/index'
-import { UserReqClass } from './types'
+import { UserReqClass } from '@/types/permission/user'
 import { useRequest } from '@/hooks/useRequest'
 import { TableProvider } from '@/context/TableProvider'
 export default function user() {
