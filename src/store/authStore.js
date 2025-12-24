@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { getToken, setToken, clearToken } from '@/utils/token'
-import { apiUserInfo, apiMenus } from '@/api/user'
+import { apiUserInfo, apiMenus } from '@/api/global'
 export const useAuthStore = create(
     (set, get, store) => ({
         token: getToken(),

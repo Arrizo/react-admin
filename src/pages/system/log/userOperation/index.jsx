@@ -1,4 +1,4 @@
-import KbpPanel from '@/components/KbpPanel'
+import KbpPanel from '@/components/BasePanel'
 import Search from './components/Search'
 import TableList from './components/TableList'
 import { UserOperationClassReq } from './types'

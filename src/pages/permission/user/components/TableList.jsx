@@ -1,17 +1,34 @@
 import { Table, Tag, Button, Modal, message } from 'antd'
 import { EditOutlined, DeleteOutlined, UserOutlined, UsergroupDeleteOutlined } from '@ant-design/icons'
 import UserModal from './UserModal'
-import { apiUserDelete } from '@/api/user/index'
+import RoleModal from './RoleModal'
+import { apiUserDelete, apiUserReset } from '@/api/permission/user/index'
 import { useRef } from 'react'
-import KbpPagination from '@/components/KbpPagination/index'
+import KbpPagination from '@/components/BasePagination/index'
 import { useTable } from '@/context/TableProvider'
-import Permission from '@/components/Permission'
+import Permission from '@/components/BasePermission'
 export default function TableList() {
     const userRef = useRef(null)
+    const roleRef = useRef(null)
     const { loading, sourceData, onSearch } = useTable()
     const showUserModal = () => userRef.current.showModal()
     const hanlderEdit = (row) => {
         userRef.current.showModal(row)
+    }
+    const hanlderRole = (id) => {
+        roleRef.current.showModal(id)
+    }
+    const hanlderReset = (id) => {
+        Modal.confirm({
+            title: '提示', content: '是否将用户密码重置为[123456]?', onOk: async () => {
+                const { code } = await apiUserReset(id)
+                if (code != 200) {
+                    return Promise.reject()
+                }
+                message.success('重置成功！')
+                onSearch()
+            }
+        })
     }
     const hanlderDel = async (row) => {
         Modal.confirm({
@@ -24,8 +41,6 @@ export default function TableList() {
                 onSearch()
             }
         })
-
-
     }
     const columns = [
         {
@@ -81,8 +96,8 @@ export default function TableList() {
                         <Button type="link" size='small' icon={<EditOutlined />} onClick={() => hanlderEdit(row)} >编辑</Button>
                     </Permission>
                     <Button type="link" size='small' icon={<DeleteOutlined />} onClick={() => hanlderDel(row)}  >删除</Button>
-                    <Button type="link" size='small' icon={<UserOutlined />} >赋予角色</Button>
-                    <Button type="link" size='small' icon={<UsergroupDeleteOutlined />} >初始密码</Button>
+                    <Button type="link" size='small' icon={<UserOutlined />} onClick={() => hanlderRole(row.id)} >赋予角色</Button>
+                    <Button type="link" size='small' icon={<UsergroupDeleteOutlined />} onClick={() => hanlderReset(row.id)} >初始密码</Button>
                 </>
                 )
             }
@@ -112,6 +127,7 @@ export default function TableList() {
                 columns={columns} />
             <KbpPagination />
             <UserModal ref={userRef} onFresch={() => onSearch({})} />
+            <RoleModal ref={roleRef} onFresch={() => onSearch({})} />
         </>
 
 

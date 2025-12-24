@@ -19,8 +19,8 @@ const PusherModal = forwardRef(({ tempalteList }, ref) => {
         form.resetFields()
         setIsOpen(false)
     }
+    //
     const onOk = async (e) => {
-
         try {
             await form.validateFields()
             setLoading(true)

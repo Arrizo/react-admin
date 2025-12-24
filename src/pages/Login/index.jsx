@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { Form, Card, Button, Input, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { useAuthStore } from '@/store'
-import { login } from '@/api/user'
+import { login } from '@/api/global'
 import styles from './Login.module.less'
 
 export default function Login() {

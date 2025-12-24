@@ -1,7 +1,8 @@
 
 import { Modal, Form, Input, Row, Col, Upload, Radio, message } from 'antd'
 import { forwardRef, useImperativeHandle, useState } from 'react'
-import { apiUpload, apiEditOrAddUser } from '@/api/user/index'
+import { apiUpload } from '@/api/global'
+import { apiEditOrAddUser } from '@/api/permission/user/index'
 const UserModal = forwardRef(({ onFresch }, ref) => {
     const [isOpen, setIsOpen] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -58,8 +59,8 @@ const UserModal = forwardRef(({ onFresch }, ref) => {
         try {
             setLoading(true)
             await form.validateFields()
-            const { code, message } = await apiEditOrAddUser(form.getFieldValue())
-            if (code != 200) throw new Error(message)
+            const { code, message: sucessMessage } = await apiEditOrAddUser(form.getFieldValue())
+            if (code != 200) throw new Error(sucessMessage)
             setLoading(false)
             message.success('添加成功')
             onFresch()

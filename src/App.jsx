@@ -12,7 +12,7 @@
 import { RouterProvider } from 'react-router-dom'
 import { createRouter } from '@/router'
 import { useMemo, useState, useEffect } from 'react'
-import { ConfigProvider, Spin } from 'antd'
+import { ConfigProvider, Spin, theme } from 'antd'
 import zhCN from 'antd/lib/locale/zh_CN'
 import { useAuthStore } from '@/store'
 import { getToken } from '@/utils/token'

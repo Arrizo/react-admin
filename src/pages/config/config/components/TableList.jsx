@@ -5,7 +5,7 @@ import PusherModal from '../components/pusherModal'
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTable } from '@/context/TableProvider'
-import KbpPagination from '@/components/KbpPagination/index'
+import KbpPagination from '@/components/BasePagination/index'
 export default function TableList({ tempalteList }) {
     const modalRef = useRef(null)
     const { loading, sourceData, onSearch } = useTable()
